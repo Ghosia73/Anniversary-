@@ -1,0 +1,462 @@
+:root {
+    --netflix-red: #e50914;
+    --netflix-black: #141414;
+    --text-light: #e5e5e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--netflix-black);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Netflix Logo */
+.netflix-logo {
+    color: var(--netflix-red);
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.netflix-logo-small {
+    color: var(--netflix-red);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-right: 2rem;
+}
+
+/* Intro Screen */
+.intro-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--netflix-black);
+    animation: fadeIn 1s ease-in;
+    position: fixed;
+    top: 0; left: 0; width: 100%; z-index: 1000;
+}
+
+.intro-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+}
+
+.intro-screen h2 {
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.profiles {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .profiles {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .profile img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    .hero-content {
+        top: 20% !important;
+        width: 80% !important;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .nav-links {
+        display: none !important;
+    }
+}
+
+.profile {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.profile:hover img {
+    border-color: white;
+}
+
+.profile p {
+    margin-top: 10px;
+    color: grey;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.profile:hover p {
+    color: white;
+}
+
+.manage-btn {
+    background: transparent;
+    border: 1px solid grey;
+    color: grey;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.manage-btn:hover {
+    color: white;
+    border-color: white;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 4%;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent);
+    transition: background-color 0.3s;
+}
+
+.navbar.scrolled {
+    background-color: var(--netflix-black);
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-links a.active {
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links a:hover {
+    color: gray;
+}
+
+.nav-right {
+    gap: 20px;
+    font-size: 1.2rem;
+}
+
+.nav-profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 85vh;
+    color: white;
+    object-fit: contain;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.hero-vignette {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, var(--netflix-black) 0%, transparent 60%),
+                linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 50%);
+}
+
+.hero-content {
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    width: 40%;
+    z-index: 20;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: 500;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-buttons button {
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.play-btn {
+    background-color: white;
+    color: black;
+}
+
+.play-btn:hover {
+    background-color: rgba(255,255,255,0.7);
+}
+
+.info-btn {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+}
+
+.info-btn:hover {
+    background-color: rgba(109, 109, 110, 0.4);
+}
+
+/* Content Rows */
+.rows-container {
+    padding-left: 4%;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.row {
+    margin-bottom: 3rem;
+}
+
+.row-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #e5e5e5;
+}
+
+.row-posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+    margin-left: -20px;
+}
+
+.row-poster {
+    width: 100%;
+    object-fit: cover;
+    max-height: 150px;
+    margin-right: 10px;
+    border-radius: 4px;
+    transition: transform 450ms;
+    cursor: pointer;
+}
+
+.row-poster:hover {
+    transform: scale(1.08);
+}
+
+.row-posterLarge {
+    max-height: 250px;
+}
+
+.row-posterLarge:hover {
+    transform: scale(1.09);
+}
+
+/* Quotes Row - Aesthetic Look */
+.quotes-row {
+    gap: 15px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.quote-poster {
+    min-width: 320px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.15), rgba(20, 20, 20, 0.9));
+    border: 1px solid rgba(255, 75, 114, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.quote-poster p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #ffb3c6;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.quote-poster:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 75, 114, 0.3);
+    border-color: rgba(255, 75, 114, 0.6);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: grey;
+    margin-top: 50px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Heart Overlay Styles */
+.heart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.heart-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.heart-content {
+    text-align: center;
+    position: relative;
+    padding: 40px;
+}
+
+.big-heart {
+    font-size: 8rem;
+    color: #ff4b72;
+    filter: drop-shadow(0 0 30px rgba(255, 75, 114, 0.8));
+    animation: heartBeat 1.5s infinite;
+    margin-bottom: 20px;
+}
+
+.heart-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    color: #fff;
+    text-shadow: 0 0 20px #ff4b72, 0 0 40px #ff4b72;
+    margin-top: 20px;
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.close-heart-btn {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.close-heart-btn:hover {
+    color: white;
+    transform: scale(1.2) rotate(90deg);
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.2); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}

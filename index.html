@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Helvetica+Neue:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Intro / Who's Watching Screen -->
+    <div id="intro-screen" class="intro-screen">
+        <h1 class="netflix-logo">Laiba Raza Anniversary</h1>
+        <div class="profiles">
+            <div class="profile" onclick="enterNetflix()">
+                <img src="img1.png" alt="Profile 1">
+                <p>1st Month</p>
+            </div>
+            <div class="profile" onclick="enterNetflix()">
+                <img src="img3.png" alt="Profile 2">
+                <p>2nd Month</p>
+            </div>
+            <div class="profile" onclick="enterNetflix()">
+                <img src="img6.png" alt="Profile 3">
+                <p>3rd Month</p>
+            </div>
+            <div class="profile" onclick="enterNetflix()">
+                <img src="img4.png" alt="Profile 4">
+                <p>4th Month</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="main-content" class="main-content hidden">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1 class="netflix-logo-small" style="font-size: 1.5rem;">Laiba Raza Anniversary</h1>
+            </div>
+            <div class="nav-right">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-bell"></i>
+                <img src="img1.png" alt="User" class="nav-profile">
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="vid1.mp4" type="video/mp4">
+            </video>
+            <div class="hero-vignette"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Our Love Story</h1>
+                <p class="hero-description">A successful relationship requires falling in love many times, always with the same person. Join us on a journey through our most beautiful memories.</p>
+                <div class="hero-buttons">
+                    <button class="play-btn" onclick="showHeartOverlay()"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Rows -->
+        <div class="rows-container">
+            <!-- Row 1 -->
+            <div class="row">
+                <div class="row-posters">
+                    <img src="img2.jpg" class="row-poster row-posterLarge" alt="Memory">
+                    <img src="img4.png" class="row-poster row-posterLarge" alt="Memory">
+                    <video src="vid2.mp4" class="row-poster row-posterLarge" autoplay loop muted playsinline></video>
+                    <img src="img5.png" class="row-poster row-posterLarge" alt="Memory">
+                    <img src="img6.png" class="row-poster row-posterLarge" alt="Memory">
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row">
+                <h2 class="row-title">Because You Love Laiba</h2>
+                <div class="row-posters">
+                    <img src="img1.png" class="row-poster" alt="Memory">
+                    <img src="img3.png" class="row-poster" alt="Memory">
+                    <img src="img5.png" class="row-poster" alt="Memory">
+                    <img src="img2.jpg" class="row-poster" alt="Memory">
+                    <video src="vid1.mp4" class="row-poster" autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="row">
+                <h2 class="row-title">Our Favorite Moments</h2>
+                <div class="row-posters">
+                    <img src="img4.png" class="row-poster" alt="Memory">
+                    <img src="img6.png" class="row-poster" alt="Memory">
+                    <img src="img1.png" class="row-poster" alt="Memory">
+                    <video src="vid2.mp4" class="row-poster" autoplay loop muted playsinline></video>
+                    <img src="img3.png" class="row-poster" alt="Memory">
+                </div>
+            </div>
+
+            <!-- Love Notes Row -->
+            <div class="row">
+                <h2 class="row-title" style="color: #ff4b72; font-family: 'Dancing Script', cursive; font-size: 2.5rem; letter-spacing: 2px;">Love Notes For You</h2>
+                <div class="row-posters quotes-row">
+                    <div class="quote-poster">
+                        <p>"Every love story is beautiful, but ours is my favorite. Happy Anniversary!"</p>
+                    </div>
+                    <div class="quote-poster">
+                        <p>"I love you not only for what you are, but for what I am when I am with you."</p>
+                    </div>
+                    <div class="quote-poster">
+                        <p>"If I had a flower for every time I thought of you... I could walk through my garden forever."</p>
+                    </div>
+                    <div class="quote-poster">
+                        <p>"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ for Laiba</p>
+        </footer>
+    </div>
+
+    <!-- Heart Overlay -->
+    <div id="heart-overlay" class="heart-overlay hidden">
+        <div class="heart-content">
+            <i class="fas fa-heart big-heart"></i>
+            <h1 class="heart-text">I love you Laiba</h1>
+            <button class="close-heart-btn" onclick="hideHeartOverlay()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
